@@ -40,10 +40,9 @@ function App() {
 <ProtectedRoute path="/dashboard" isAdmin={true} component={Dashboard} exact/>
 <Route path="/admin/driver/details/:id"  component={ProfileDetails} exact/>
 <Route path="/admin/driver/vehicledetails/:id"  component={VerifyDocuments} exact/>
-<Route path="/verifyDocuments" component={VerifyDocuments} exact></Route>
-<Route path="/trackDriver" component={TrackDriver} exact></Route>
-<Route path="/walletLogs" component={WalletLogs} exact></Route>
-<Route path="/updateProfile/:id" component={Updateprofile} exact></Route>
+{/* <Route path="/trackDriver" component={TrackDriver} exact></Route> */}
+<Route path="/walletLogs/:id" component={WalletLogs} exact></Route>
+{/* <Route path="/updateProfile/:id" component={Updateprofile} exact></Route> */}
 
       
 

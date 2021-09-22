@@ -68,7 +68,6 @@ useEffect(()=>{
       <Form.Label>Vehicle Brand</Form.Label>
       <Form.Control />
     </Form.Group>
-
     <Form.Group as={Col} controlId="formBrand">
       <Form.Label>Vehicle Brand</Form.Label>
       <Form.Control />
@@ -77,7 +76,6 @@ useEffect(()=>{
 {/* 
   <Form.Group className="mb-3" id="formModel">
       <Form.Label>Vehicle Model</Form.Label>
-
       <Form.Control placeholder={driver.VehicleType} disabled />
   </Form.Group> */}
   <Form.Group className="mb-3" id="formVehicleName">

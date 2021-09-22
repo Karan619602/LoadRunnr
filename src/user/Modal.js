@@ -46,7 +46,12 @@ export default function Modal({ open, children, onClose,off}) {
             
             <div style={OVERLAY_STYLES} />
             <div style={MODAL_STYLES} className="p">
+            {/* <h2> Do you want to block this Driver?
+                    </h2>  */}
                 <div className="cj">
+                <h4> Do you want to block this Driver?
+                    </h4> 
+                   
                 {bl?null:<Button onClick={()=>{setbl(true)}}>Block</Button>}
                     {bl ?
                         <Form>
@@ -55,10 +60,10 @@ export default function Modal({ open, children, onClose,off}) {
                             <Form.Control type="text" placeholder="enter reason" size="50" />
                         </Form.Group>
 
-                        <Form.Group className="mb-3" controlId="formBasicPassword">
+                        {/* <Form.Group className="mb-3" controlId="formBasicPassword">
                             <Form.Label>Admin Password</Form.Label>
                             <Form.Control type="password" placeholder="password" />
-                        </Form.Group>
+                        </Form.Group> */}
                         <Form.Group className="mb-3" controlId="formBasicCheckbox">
         
                         </Form.Group>

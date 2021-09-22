@@ -1,9 +1,66 @@
-import React from 'react'
+import React,{useEffect, useState} from 'react'
+import { useDispatch,useSelector } from 'react-redux'
+import './styles/VerifyDocuments.css'
+import  {Form,Row,Col,Card,Button} from 'react-bootstrap'
 import './styles/WalletLogs.css'
-function WalletLogs() {
+import { updateUser, getdriverDetails} from '../actions/authactions'
+
+const WalletLogs=({match})=> {
+  const dispatch= useDispatch();
+  const {driver}=useSelector(state=>state.driverdetails)
+  const driverId = match.params.id;
+
+  useEffect(()=>{   
+   
+        
+
+    dispatch(getdriverDetails(driverId)) 
+   
+
+  
+},[dispatch,driverId])
+
+
+
     return (
         <div className="logs">
-            <div className="head"> Welcome admin Dashboard !</div>
+            {/* <div className="head"> Welcome admin Dashboard !</div> */}
+            <div className="wrapper2">
+          
+            <div className="first">
+                <div className="a">
+                <img src={driver.Profile_Photo ? driver.Profile_Photo.url : ''} alt='png'></img>
+                {/* <input type="file" className="pt" name="Aadhar_Photo_Back" onChange={(e)=>handleimagechange(e)} ></input> */}
+                </div>
+                <div className="b">
+                    <div>
+                        <div className="s" > <div className="ff driver" >Driver ID:-{driver._id}  </div> </div>
+                        <div className="s" > <div className="ff">Name:- {driver.firstname} {driver.lastname} </div></div>
+                        <div className="s" > <div className="ff">Mobile Number:- {driver.Phone_No}</div></div>
+                        {/* <div>Alternate Number: {driver.Alternate_No} </div> */}
+                        <div>Emergency Number:- {driver.Emergency_No} </div>  
+                    
+                  
+                   {/* <div className="wrap">
+                     <Form.Group as={Row} className="mb-3" >
+                       {/* // <Form.Label column sm="1">
+                         Emergency_No:
+                        </Form.Label> 
+                        Emergency_No:
+                        <Col sm="10">
+                        {/* <Form.Control type="text" readOnly={r1} placeholder={driver.Emergency_No}  /> 
+                        <input type="text" readOnly={r1} placeholder={driver.Emergency_No}  />
+                        </Col>
+                     </Form.Group>
+                     
+                    <button type="button" className="bt" onClick={() => { setr1(!r1) }}>Edit icon</button>
+                    
+                   </div> */}
+                                        {/* <div>Emergency Number:- {driver.Emergency_No} </div>   */}
+
+                   
+                  </div>
+                </div> </div> </div>
             <div className="bottom">
                   
             <div className="row quick-action-toolbar">

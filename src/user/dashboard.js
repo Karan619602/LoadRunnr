@@ -133,16 +133,16 @@ const setdrivers = () => {
              {/* <Dropdown.Item href="./verifyDocuments">Add & verify documents</Dropdown.Item> */}
             <Link to={`/admin/driver/vehicledetails/${user._id}`}> Add & verify documents</Link>
                     
+             {/* <hr /> */}
+             {/* <Link to="./trackDriver">Track Driver</Link> */}
              <hr />
-             <Link to="./trackDriver">Track Driver</Link>
-             <hr />
-             <Link to="./walletLogs">View wallet logs</Link>
-             <hr />
-             <Link to={`./updateProfile/${user._id}`}>Update profile</Link>
+             <Link to={`./walletLogs/${user._id}`}>View wallet logs</Link>
+             {/* <hr />
+             <Link to={`./updateProfile/${user._id}`}>Update profile</Link> */}
              <hr />
              {/* <Dropdown.Item href="./ProfileDetails">Detail Profile</Dropdown.Item> */}
              <Link to={`/admin/driver/details/${user._id}`}> Profile Details</Link>
-             
+             <hr />
              <Button onClick={() => { setpop(true) }} variant="primary" > Block !</Button>
              <Modal open={pop} onClose={st} off={off} ></Modal>
             </DropdownButton>,
