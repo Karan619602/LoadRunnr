@@ -142,8 +142,13 @@ const setdrivers = () => {
              <hr />
              {/* <Dropdown.Item href="./ProfileDetails">Detail Profile</Dropdown.Item> */}
              <Link to={`/admin/driver/details/${user._id}`}> Profile Details</Link>
+<<<<<<< HEAD
              <hr />
              <Button onClick={() => { setpop(true) }} variant="primary" > Block !</Button>
+=======
+             
+             <Button onClick={() => {setpop(true)}} variant="primary" > Block !</Button>
+>>>>>>> 5e9ff0bfbef27bdff3d943f35f27c1896ad870d5
              <Modal open={pop} onClose={st} off={off} ></Modal>
             </DropdownButton>,
            
@@ -163,7 +168,7 @@ const setdrivers = () => {
                     <div className="wrapper"> 
             <div className="constraints">
                <div className="tp"><span className="title">Status:</span>
-                 <DropdownButton className="btn2" id="dropdown-button-dark-example1"  variant="secondary" title="All">
+                 <DropdownButton id="dropdown-button-dark-example1"  variant="secondary" title="All">
                     <Dropdown.Item href="#/action-1">All</Dropdown.Item>
                     <Dropdown.Item href="#/action-2">Acitve</Dropdown.Item>
                     <Dropdown.Item href="#/action-3">Blocked</Dropdown.Item>
