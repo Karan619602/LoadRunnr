@@ -11,6 +11,14 @@
     display: flex;
     flex-direction: column;
 }
-.unb{
-    margin-left: 4%;
+.cross{
+    margin-left: 90%;
+}
+.pl{
+    display: flex;
+    flex-direction: column;
+}
+.cj{
+    display: flex;
+    flex-direction: row;
 }

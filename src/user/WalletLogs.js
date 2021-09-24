@@ -39,7 +39,7 @@ const WalletLogs=({match})=> {
                         <div className="s" > <div className="ff">Mobile Number:- {driver.Phone_No}</div></div>
                         {/* <div>Alternate Number: {driver.Alternate_No} </div> */}
                         <div>Emergency Number:- {driver.Emergency_No} </div>  
-                    
+
                   
                    {/* <div className="wrap">
                      <Form.Group as={Row} className="mb-3" >
@@ -60,7 +60,10 @@ const WalletLogs=({match})=> {
 
                    
                   </div>
-                </div> </div> </div>
+                </div>
+                <div className="c"><ul><li className="driver">Vehicle number:-{driver.Vehicle_Number} </li> <li className="driver">Vehicle Type:-{driver.VehicleType} </li> <li className="driver">Vehicle Sub:- {driver.type}</li></ul></div>
+                </div>
+                 </div>
             <div className="bottom">
                   
             <div className="row quick-action-toolbar">

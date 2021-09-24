@@ -5,6 +5,7 @@ import  {Form,Row,Col,Card,Button} from 'react-bootstrap'
 import { update } from '../actions/authactions'
 import axios from 'axios'
 import { useAlert } from 'react-alert'
+// import EditSharp from '@mui/icons-material/EditSharp';
 import { UPDATE_IMAGES_RESET } from '../constants/authconstants'
 
 
@@ -50,7 +51,14 @@ if(e.target.name==='Profile_Photo'||e.target.name==='Passbook_Photo'||e.target.n
       setobj({...obj,[e.target.name]:{url:image.data.path,filename:image.data.filename}})
     }
     else {
-      setobj({...obj,[e.target.name]:e.target.value})
+        if(e.target.value===''){
+            var val=e.target.name
+            console.log("val",val);
+      setobj({...obj,[e.target.name]:driver.val})
+        }
+        else {
+            setobj({...obj,[e.target.name]:e.target.value})
+        }
   
     }
     
@@ -71,7 +79,7 @@ const Onclick = (e,id) => {
     
     //   formData.set('status', status);
 
-      dispatch(updateUser(id, "Approved"))
+      dispatch(updateUser(id, "Active"))
       history.push('/dashboard')
   }
 
@@ -92,7 +100,12 @@ const Onclick = (e,id) => {
     const [s1, sets1] = useState(true); 
     const [s2, sets2] = useState(true); 
     const [s3, sets3] = useState(true); 
-
+    const [eaadhar, seteaadhar] = useState(true);
+    const [epan, setepan] = useState(true);
+    const [edl, setedl] = useState(true);
+    const [erc, seterc] = useState(true);
+    const [einsure, seteins] = useState(true);
+  
 
 
     
@@ -103,15 +116,10 @@ const Onclick = (e,id) => {
             <div className="first">
                 <div className="a">
                 <img src={driver.Profile_Photo ? driver.Profile_Photo.url : ''} alt='png'></img>
-                {/* <input type="file" className="pt" name="Aadhar_Photo_Back" onChange={(e)=>handleimagechange(e)} ></input> */}
                 </div>
                 <div className="b">
                     <div>
-                        {/* <div className="s" > <div className="ff driver" >Driver ID:-{driver._id}  </div><div className="ssa"><button className="bt">Edit icon</button></div> </div> 
-                        <div className="s" > <div className="ff">Name:- {driver.firstname} {driver.lastname} </div><div className="ssb"><button className="bt">Edit icon</button></div> </div>
-                        <div className="s" > <div className="ff">Mobile Number:- {driver.Phone_No}</div><div className="ssc"><button className="bt">Edit icon</button></div> </div>
-                        <div>Alternate Number: {driver.Alternate_N} </div>
-                        <div>Emergency Number:- {driver.Emergency_No} </div>   */}
+                      
                         <div className="wrap">
                      <Form.Group as={Row} className="mb-3" >
                         <Form.Label column sm="2">
@@ -134,7 +142,7 @@ const Onclick = (e,id) => {
                         </Col>
                      </Form.Group>
                      
-                    <button type="button" className="bt" onClick={() => { sets2(!s2) }}>Edit icon</button>
+                    <button type="button" className="bt" onClick={() => { sets2(!s2) }}>Edit </button>
                     
                    </div>
                    <div className="wrap">
@@ -147,7 +155,7 @@ const Onclick = (e,id) => {
                         </Col>
                      </Form.Group>
                      
-                    <button type="button" className="bt" onClick={() => { sets3(!s3) }}>Edit icon</button>
+                    <button type="button" className="bt" onClick={() => { sets3(!s3) }}>Edit </button>
                     
                    </div>
                    {/* <div className="wrap">
@@ -162,7 +170,7 @@ const Onclick = (e,id) => {
                         </Col>
                      </Form.Group>
                      
-                    <button type="button" className="bt" onClick={() => { setr1(!r1) }}>Edit icon</button>
+                    <button type="button" className="bt" onClick={() => { setr1(!r1) }}>Edit </button>
                     
                    </div> */}
                                         {/* <div>Emergency Number:- {driver.Emergency_No} </div>   */}
@@ -170,7 +178,7 @@ const Onclick = (e,id) => {
                    
                   </div>
                 </div>
-                <div className="c"><ul><li className="driver">Vehicle number:-{driver.Vehicle_Number} </li> <li className="driver">Vehicle Type:-{driver.type} </li> <li className="driver">Vehicle Sub:- {driver.VehicleType}</li></ul></div>
+                <div className="c"><ul><li className="driver">Vehicle number:-{driver.Vehicle_Number} </li> <li className="driver">Vehicle Type:-{driver.VehicleType} </li> <li className="driver">Vehicle Sub:- {driver.type}</li></ul></div>
             </div>
             <div className="second">
                 <div className="a">
@@ -189,7 +197,7 @@ const Onclick = (e,id) => {
                         </Col>
                      </Form.Group>
                      
-                    <button type="button" className="bt" onClick={() => { setr1(!r1) }}>Edit icon</button>
+                    <button type="button" className="bt" onClick={() => { setr1(!r1) }}>Edit </button>
                     
                    </div>
                     <div className="wrap">
@@ -201,7 +209,7 @@ const Onclick = (e,id) => {
                         <Form.Control type="text" readOnly={r2} name="Bank_Name" placeholder={driver.Bank_Name} onChange={(e)=>handleimagechange(e)}  />
                         </Col>
                     </Form.Group>
-                            <button type="button"  className="bt" onClick={() => { setr2(!r2) }}>Edit icon</button>
+                            <button type="button"  className="bt" onClick={() => { setr2(!r2) }}>Edit </button>
                     </div>
                     <div className="wrap">
                     <Form.Group as={Row} className="mb-3" >
@@ -212,7 +220,7 @@ const Onclick = (e,id) => {
                         <Form.Control type="text"  readOnly={r3} name="IFSC_CODE" placeholder= {driver.IFSC_CODE} onChange={(e)=>handleimagechange(e)} />
                         </Col>
                             </Form.Group>
-                            <button type="button"  className="bt" onClick={()=>{setr3(!r3)}}>Edit icon</button>
+                            <button type="button"  className="bt" onClick={()=>{setr3(!r3)}}>Edit </button>
                     </div>
                    
                 </div>
@@ -224,10 +232,12 @@ const Onclick = (e,id) => {
                     <Card.Img variant="top" src={driver.Aadhar_Photo_Front?driver.Aadhar_Photo_Front.url:""} />
                     <Card.Body>
                         <Card.Text>
-                        Document number : {driver.Aadhar_No}
+                        Document number : 
+                        <textarea className="mk" rows="1" cols="20" name="Aadhar_No" readOnly={eaadhar} placeholder={driver.Aadhar_No}></textarea>    
+                                <button type="button" className="btr" onClick={() => { seteaadhar(!eaadhar) }}>Edit </button>
                             </Card.Text>
                         <div className="ed">
-                                <Button variant="light" onClick={()=>{setaadhar(!aadhar)}}> <div className="clr"> Upload Icon</div></Button>
+                                <Button variant="light" onClick={()=>{setaadhar(!aadhar)}}> <div className="clr"> Upload</div></Button>
                                 {aadhar?<input type="file" className="pt" name="Aadhar_Photo_Front" onChange={(e)=>handleimagechange(e)} ></input>:null}
                         </div>
                     </Card.Body>
@@ -236,11 +246,9 @@ const Onclick = (e,id) => {
                     <Card.Title>Aadhar Back</Card.Title>
                     <Card.Img variant="top" src={driver.Aadhar_Photo_Back?driver.Aadhar_Photo_Back.url:""} />
                     <Card.Body>
-                        <Card.Text>
-                        Document number : {driver.Aadhar_No}
-                            </Card.Text>
+                    
                         <div className="ed">
-                                <Button variant="light" onClick={()=>{setback(!back)}}> <div className="clr"> Upload Icon</div></Button>
+                                <Button variant="light" onClick={()=>{setback(!back)}}> <div className="clr"> Upload</div></Button>
                                 {back?<input type="file" className="pt" name="Aadhar_Photo_Back" onChange={(e)=>handleimagechange(e)} ></input>:null}
                         </div>
                     </Card.Body>
@@ -252,11 +260,12 @@ const Onclick = (e,id) => {
                         <Card.Text>
                         Document number   : 
                       
-                        {driver.PAN_No}
+                        <textarea className="mk" rows="1" cols="20" name="PAN_No" readOnly={epan} placeholder={driver.PAN_No}></textarea>    
+                                <button type="button" className="btr" onClick={() => { setepan(!epan) }}>Edit </button>
                         </Card.Text>
                         
                         <div className="ed">
-                                <Button variant="light" onClick={()=>{setpan(!pan)}}> <div className="clr"> Upload Icon</div></Button>
+                                <Button variant="light" onClick={()=>{setpan(!pan)}}> <div className="clr"> Upload</div></Button>
                                 {pan?<input type="file" className="pt" name="PAN_Photo" onChange={(e)=>handleimagechange(e)} ></input>:null}
                         </div>
                     </Card.Body>
@@ -266,10 +275,13 @@ const Onclick = (e,id) => {
                     <Card.Img variant="top" src={driver.Driving_License_Photo?driver.Driving_License_Photo.url:''} />
                     <Card.Body>
                         <Card.Text>
-                        Document number : {driver.Driving_License_No}
+                        Document number :
+                        <textarea className="mk" rows="1" cols="20" name="Driving_License_No" readOnly={edl} placeholder={driver.Driving_License_No}></textarea>    
+                                <button type="button" className="btr" onClick={() => { setedl(!edl) }}>Edit </button>
+                            
                         </Card.Text>
                         <div className="ed">
-                                <Button variant="light" onClick={()=>{setdl(!dl)}}> <div className="clr"> Upload Icon</div></Button>
+                                <Button variant="light" onClick={()=>{setdl(!dl)}}> <div className="clr"> Upload</div></Button>
                                 {dl?<input type="file" className="pt"  name="Driving_License_Photo" onChange={(e)=>handleimagechange(e)} ></input>:null}
                         </div>
                     </Card.Body>
@@ -281,11 +293,13 @@ const Onclick = (e,id) => {
                         <Card.Text>
                         Document number   : 
                        
-                        {driver.Vehicle_RC_Number}
+                        
+                        <textarea className="mk" rows="1" cols="20" readOnly={erc} name="Vehicle_RC_Number" placeholder={driver.Vehicle_RC_Number}></textarea>    
+                                <button type="button" className="btr" onClick={() => { seterc(!erc) }}>Edit </button>
                         </Card.Text>
                         <div className="ed">
-                                <Button variant="light" onClick={()=>{setrc(!rc)}}> <div className="clr"> Upload Icon</div></Button>
-                                {rc?<input type="file" className="pt" name="RC_Photo" onChange={(e)=>handleimagechange(e)} ></input>:null}
+                                <Button variant="light" onClick={()=>{setrc(!rc)}}> <div className="clr"> Upload</div></Button>
+                                {rc?<input type="file" className="pt" name="RC_Photo" onChange={(e)=>handleimagechange(e)}  ></input>:null}
                         </div>
                     </Card.Body>
                     </Card>
@@ -296,14 +310,18 @@ const Onclick = (e,id) => {
                     <Card.Img variant="top" src={driver.Insurance_Photo?driver.Insurance_Photo.url:''} />
                     <Card.Body>
                         <Card.Text>
-                        Document number : {driver.Vehicle_Insurance_Number}
+                        Document number :
+                        <textarea className="mk" rows="1" cols="20" name="Vehicle_Insurance_Number" readOnly={erc} placeholder= {driver.Vehicle_Insurance_Number}></textarea>    
+                                <button type="button" className="btr" onClick={() => { seterc(!erc) }}>Edit </button>
                         <hr/>
-                        Expiry Date:{driver.Insurance_Expiry_Date}
+                        Expiry Date:
+                        <textarea className="mk" rows="1" cols="20" name="Insurance_Expiry_Date" readOnly={erc} placeholder={driver.Insurance_Expiry_Date}></textarea>    
+                                <button type="button" className="btr" onClick={() => { seterc(!erc) }}>Edit </button>
                         </Card.Text>
                         <div className="ed">
                         <div className="but">
                                 
-                                <Button variant="light" onClick={() => { setins(!insure) }}> <div className="clr"> Upload Icon</div></Button>
+                                <Button variant="light" onClick={() => { setins(!insure) }}> <div className="clr"> Upload</div></Button>
                                 {insure?<input type="file" className="pt" name="Insurance_Photo" onChange={(e)=>handleimagechange(e)} ></input>:null}
                                 </div>
                         </div>
@@ -318,7 +336,7 @@ const Onclick = (e,id) => {
                         Document number : {driver.}
                         </Card.Text> */}
                         <div className="ed">
-                                <Button variant="light" onClick={()=>{setfront(!front)}}> <div className="clr"> Upload Icon</div></Button>
+                                <Button variant="light" onClick={()=>{setfront(!front)}}> <div className="clr"> Upload</div></Button>
                                 {front?<input type="file" className="pt" name="Vehicle_Front_Photo" onChange={(e)=>handleimagechange(e)} ></input>:null}
                         </div>
                     </Card.Body>
@@ -331,7 +349,7 @@ const Onclick = (e,id) => {
                         Document number : {}
                         </Card.Text>
                         <div className="ed">
-                                <Button variant="light" onClick={()=>{setback(!back)}}> <div className="clr"> Upload Icon</div></Button>
+                                <Button variant="light" onClick={()=>{setback(!back)}}> <div className="clr"> Upload</div></Button>
                                 {back?<input type="file"  className="pt"></input>:null}
                         </div>
                     </Card.Body>
@@ -344,7 +362,7 @@ const Onclick = (e,id) => {
                         Document number : {}
                         </Card.Text>
                         <div className="ed">
-                                <Button variant="light" onClick={()=>{setvaccine(!vaccine)}}> <div className="clr"> Upload Icon</div></Button>
+                                <Button variant="light" onClick={()=>{setvaccine(!vaccine)}}> <div className="clr"> Upload</div></Button>
                                 {vaccine?<input type="file" className="pt"></input>:null}
                         </div>
                     </Card.Body>

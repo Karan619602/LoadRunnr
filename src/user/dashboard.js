@@ -44,10 +44,11 @@ const setdrivers = () => {
     const data = {
         columns: [
             {
-                label: 'User ID',
+                label: 'Driver ID',
                 field: 'id',
                 sort: 'asc'
             },
+           
             {
                 label: 'Status',
                 field: 'Status',
@@ -93,7 +94,7 @@ const setdrivers = () => {
             },
             {
                 label: 'Orders',
-                field: 'Ordeers',
+                field: 'Orders',
                 sort:'asc'
             },
             {
@@ -119,13 +120,14 @@ const setdrivers = () => {
         data.rows.push({
 
             id: user._id,
-             Status: user.status,
+            Status:user.status,
             Balance:0,
             Online: user.online, 
             drivername: user.firstname ,
             Phone_No: user.Phone_No,
             vehicletype:user.VehicleType,
             type:user.type,
+            RefferedBy:user.Referral_No,
             createdBy:"App",
             RegisteredOn:user.createdAt,
             Action:
@@ -142,15 +144,13 @@ const setdrivers = () => {
              <hr />
              {/* <Dropdown.Item href="./ProfileDetails">Detail Profile</Dropdown.Item> */}
              <Link to={`/admin/driver/details/${user._id}`}> Profile Details</Link>
-<<<<<<< HEAD
-             <hr />
-             <Button onClick={() => { setpop(true) }} variant="primary" > Block !</Button>
-=======
-             
+             <hr/>
              <Button onClick={() => {setpop(true)}} variant="primary" > Block !</Button>
->>>>>>> 5e9ff0bfbef27bdff3d943f35f27c1896ad870d5
              <Modal open={pop} onClose={st} off={off} ></Modal>
             </DropdownButton>,
+            Orders:0,
+            Reviews:0,
+
            
         })
     })
