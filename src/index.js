@@ -13,12 +13,11 @@ const options={
   transitions:transitions.SCALE
 }
 ReactDOM.render(
-  <React.StrictMode>
   <Provider store={store}>
   <AlertProvider template={AlertTemplate} {...options}>
     <App />
   </AlertProvider>
   </Provider>
-  </React.StrictMode>,
+  ,
   document.getElementById('root')
 );
